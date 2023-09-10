@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+    <style>
+        .text-box{
+            width: 38%;
+            height: 400px;
+            background-image: url(page.jpg);
+            margin-left: 28%;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-top: 47px;
+            padding-left: 90px;
+        }
+        button{
+            height: 40px;
+            width: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(44, 42, 42);">
+    <h1 style="color: #fff;margin-left: 48%;">NotePad</h1>
+    <textarea class="text-box" placeholder="Enter Something......" id="notepad"></textarea><br>
+    <button style="margin-left: 40%;" id="save">SAVE</button>
+    <button style="margin-left: 10%;" id="clear">CLEAR</button>
+</body>
+<script>
+   const inputBox = document.querySelector("#notepad");
+const saveBtn = document.querySelector("#save");
+const clearBtn = document.querySelector("#clear");
+
+document.querySelector("#save").addEventListener("click", function () {
+  save();
+});
+document.querySelector("#clear").addEventListener("click", function () {
+  clear();
+});
+
+function save() {
+  localStorage.setItem("data", inputBox.value);
+}
+function clear() {
+  localStorage.clear();
+  inputBox.value = "";
+}
+function show() {
+  inputBox.innerHTML = localStorage.getItem("data");
+}
+show();
+</script>
+</html>
